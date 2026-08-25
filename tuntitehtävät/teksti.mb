@@ -1,0 +1,6 @@
+1.Lämpötila on alle 0 / lämpötila on -10 and -3 / lämpötila <0
+2.Opiskelijalla on vähintään 150 opintopistettä / opiskelijalla on 200 or 150 pistettä/ op >=150
+3.Sää on lämmin ja sää ei ole pilvinen / sää on lämmin and pilvinen/ sää = "lämmin" and sää != "pilvinen"
+4.Kala koko on yli 10 cm ja enintään 65 cm, tai kala on yli 10 vuotias/ kala on yli 10cm or max 65cm or 10 years old/ Koko >10
+and koko <=65 or ikä >10
+
