@@ -10,19 +10,19 @@ else:
     print("Tervetuloa")
 
 päävalikko = print("Päävalikko") 
-päävalikko_komennot = print("Hoida kissaa. Miten haluaisit hoitaa kissaa? Ruoki, Harjaa vai Silitä: ")      
-komento = input("Anna komento: ")
-
-ruoka_lista = [ "kala", "kana", "liha" ]
+komento = input("Kokataan porkkana. Mitä tehdään esin, pese, kuoria tai pilko? Anna komento: ")
 while komento != "lopeta":
-    if komento == 'Ruoki':
-        print("Mitä ruokaa annetaan kissalle?: ")
+    if komento == 'pese':
+        print("Suoritan toiminnon: " + komento)
+        print("Porkkana on pesty")
 
-        if komento != ruoka_lista:
-            print("Tämä ei sovi kissalle!")
-            if komento == ruoka_lista:
-                 print("Tämä on kissan lempiruokaa")
-            
+    elif komento == 'kuori':
+        print("Suoritan toiminnon: " + komento)
+        print("Porkkana on kuorittu")
 
-        komento = input("Anna komento: ")
-print("Toiminnot lopetettu.")
+    elif komento == 'pilko':
+        print("Suoritan toiminnon: " + komento)
+        print("Porkkana on pilkottu.")
+
+    komento = input("Anna komento tai kirjoita lopeta: ")
+print("Porkkana on kokattu.")
