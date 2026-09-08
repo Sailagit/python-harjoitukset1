@@ -32,9 +32,7 @@ else:
     def kokkaa_porkkana():
         print("Kokataan porkkana!")
         
-        komento = input(
-            "Mitä tehdään ensin: pese, kuori tai pilko? Anna komento: "
-        )
+        komento = input("Mitä tehdään ensin: pese, kuori tai pilko? Anna komento: ")
 
         while komento != "lopeta":
             if komento == "pese":
