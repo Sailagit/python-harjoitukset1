@@ -1,2 +1,3 @@
 käyttäjä = input("Mikä on nimesi ")
-print("Hauska tavat,"+ käyttäjä +"!")
+print("Hauska tavat, " + käyttäjä + "!")
+
