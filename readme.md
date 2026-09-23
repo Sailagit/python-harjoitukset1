@@ -6,4 +6,6 @@ Tein moduulin 4 tehtävät.
 Tein moduulin 5 ja 6 tehtävät.
 Tein moduulin 7 ja 8 tehtävät.
 Tein moduulin 9 tehtävät.
-Moduulin 10 tehtävä 4 on kesken.
+Moduulin 10 tehtävät tehty.
+Tein moduulin 11 tehtävät.
+

@@ -22,37 +22,45 @@ class Auto:
         self.kuljettu_matka += (self.nopeus * tuntimäärä)
 
 class Kilpailu:
-    def __init__(self, kilpailun_nimi, kilpailun_pituus, kilpa_autot):
+    def __init__(self, kilpailun_nimi, kilpailun_matka, kilpa_autot):
         self.kilpailun_nimi = kilpailun_nimi
-        self.kilpailun_pituus = kilpailun_pituus
+        self.kilpailun_matka = kilpailun_matka
         self.kilpa_autot = kilpa_autot
 
-    def tunti_kuluu():
-        for auto in kilpa_autot:
+    def tunti_kuluu(self):
+        for auto in self.kilpa_autot:
             auto.kiihdytä(random.randint(-10, 15))
             auto.kulje(1)
 
-    def tulosta_tilanne():
+    def tulosta_tilanne(self):
         kilpa_autot.sort(key = lambda auto: auto.kuljettu_matka, reverse = True)
-        for auto in kilpa_autot:
+        for auto in self.kilpa_autot:
             print(str(auto))
+        print("___________________________________________________________")
 
-    def kilpailu_ohi():
-        while not kilpailu_voitettu:
-                if auto.kuljettu_matka >= 8000:
-                    kilpailu_voitettu = True
+    def kilpailu_ohi(self):
+        for auto in  self.kilpa_autot:
+                if auto.kuljettu_matka >= self.kilpailun_matka:
                     return True
-                else:
-                    return False
+        else:
+            return False
+
 kilpa_autot = []
 for i in range(1, 11):
     uusi_auto = Auto(random.randint(100, 200), f"ABC-{+ i}" )
     kilpa_autot.append(uusi_auto)
 
 kisa = Kilpailu("Suuri romuralli", 8000, kilpa_autot)
+tunnit = 0
 
-while not kisa.kilpailu_ohi():
+while True:
     kisa.tunti_kuluu()
     tunnit += 1
+
     if tunnit % 10 == 0:
         kisa.tulosta_tilanne()
+
+    if kisa.kilpailu_ohi():
+        break
+
+kisa.tulosta_tilanne()
