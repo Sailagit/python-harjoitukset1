@@ -40,8 +40,8 @@ class Kilpailu:
 
     def kilpailu_ohi(self):
         for auto in  self.kilpa_autot:
-                if auto.kuljettu_matka >= self.kilpailun_matka:
-                    return True
+            if auto.kuljettu_matka >= self.kilpailun_matka:
+                return True
         else:
             return False
 
