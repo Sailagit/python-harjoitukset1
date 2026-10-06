@@ -1,0 +1,11 @@
+PELIN OHJEET
+
+1 - Kerää esine
+2 - Näytä omat esineet
+3 - Näytä huoneen esineet
+4 - Liiku toiseen huoneeseen
+5 - Kokkaa porkkana
+6 - Tallenna peli
+lopeta - Lopeta peli
+
+Voit tallentaa pelin ja jatkaa myöhemmin siitä, mihin jäit.

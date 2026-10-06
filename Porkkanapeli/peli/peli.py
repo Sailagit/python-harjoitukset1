@@ -5,11 +5,22 @@ käyttäjä = input("Hei! Mikä on nimesi? ")
 print("Hauska tavata, " + käyttäjä + "!")
 ikä = int(input("Kerrotko vielä ikäsi: "))
 
+def lue_intro():
+    try:
+        with open("Porkkanapeli/peli/intro.txt", "r", encoding="utf-8") as tiedosto:
+            intro = tiedosto.read()
+        return intro
+    except FileNotFoundError:
+        print("Tiedostoa ei löydy.")
+    except IOError:
+        print("Tiedoston käsittelyssä tapahtui virhe.")
+
 ## Jos pelaaja on alle 12v peli sammuu
 if ikä < 12:
     print("Olet alaikäinen, peli sammutetaan")
+    exit()
 else:
-    print("Tervetuloa!")
+    print(lue_intro())
 
 keittiö = Huone("Keittiö")
 varasto = Huone("Varasto")
@@ -22,6 +33,17 @@ ruokakomero.esineet.append(esine2)
 keittiö.esineet.append(esine3)
 pelaaja1 = Pelaaja(käyttäjä, keittiö)
 
+def lue_ohjeet():
+    try:
+        with open("Porkkanapeli/peli/ohjeet.txt", "r", encoding= "utf-8") as tiedosto:
+            ohjeet = tiedosto.read()
+        return ohjeet
+    except FileNotFoundError:
+        print("Tiedostoa ei löydy.")
+    except IOError:
+        print("Tiedoston käsittelyssä tapahtui virhe.")
+print(lue_ohjeet())
+
 def näytä_esineet():
     print("\nTyövälineesi:")
 
@@ -30,6 +52,53 @@ def näytä_esineet():
     else:
         for esine in pelaaja1.esineet:
             print("-", esine.nimi, "(", esine.paino, "kg)")
+
+import json
+
+def tallenna_peli():
+    tallennus = {
+        "käyttäjä": pelaaja1.käyttäjä,
+        "sijainti": pelaaja1.sijainti.nimi,
+        "esineet": []
+    }
+
+    for esine in pelaaja1.esineet:
+        tallennus["esineet"].append(esine.nimi)
+
+    with open("tallennus.json", "w") as tiedosto:
+        json.dump(tallennus, tiedosto)
+
+    print("Peli tallennettu!")
+
+def lataa_peli():
+    try:
+        with open("tallennus.json", "r") as tiedosto:
+            tallennus = json.load(tiedosto)
+
+        pelaaja1.käyttäjä = tallennus["käyttäjä"]
+
+        if tallennus["sijainti"] == "Keittiö":
+            pelaaja1.sijainti = keittiö
+        elif tallennus["sijainti"] == "Varasto":
+            pelaaja1.sijainti = varasto
+        elif tallennus["sijainti"] == "Ruokakomero":
+            pelaaja1.sijainti = ruokakomero
+
+        pelaaja1.esineet = []
+
+        for esineen_nimi in tallennus["esineet"]:
+            if esineen_nimi == "veitsi":
+                pelaaja1.esineet.append(esine1)
+            elif esineen_nimi == "kuorimaveitsi":
+                pelaaja1.esineet.append(esine2)
+            elif esineen_nimi == "leikkuulauta":
+                pelaaja1.esineet.append(esine3)
+
+        print("Peli ladattu!")
+
+    except FileNotFoundError:
+        print("Tallennettua peliä ei löytynyt.")
+
 
 def näytä_huoneen_esineet():
     print("\nHuoneessa", pelaaja1.sijainti.nimi, "on:")
@@ -102,6 +171,20 @@ def liiku():
         print("Virheellinen valinta.")
 
 # Päävalikko
+
+print("Haluatko aloittaa uuden pelin vai jatkaa tallennettua peliä?")
+print("1 - Uusi peli")
+print("2 - Jatka peliä")
+
+valinta = input("Valitse: ")
+
+if valinta == "2":
+    lataa_peli()
+
+
+lue_intro()
+lue_ohjeet()
+
 komento = ""
 
 while komento != "lopeta":
@@ -114,6 +197,7 @@ while komento != "lopeta":
     print("3 - Näytä huoneen esineet")
     print("4 - Liiku toiseen huoneeseen")
     print("5 - Kokkaa porkkana")
+    print("6 - Tallenna peli")
     print("lopeta - Lopeta peli")
 
     komento = input("Valitse toiminto: ")
@@ -132,6 +216,9 @@ while komento != "lopeta":
 
     elif komento == "5":
         kokkaa_porkkana()
+
+    elif komento == "6":
+        tallenna_peli()
 
     elif komento == "lopeta":
         print("Peli lopetetaan.")

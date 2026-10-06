@@ -1,0 +1,7 @@
+Tervetuloa Porkkanan kokkaus peliin!
+
+Tässä pelissä tarkoituksesi on valmistaa herkullinen porkkana.
+Voit tutkia huoneita, kerätä keittiövälineitä ja käyttää niitä
+porkkanan valmistamiseen.
+
+Onnea peliin!
