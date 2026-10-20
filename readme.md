@@ -8,5 +8,4 @@ Tein moduulin 7 ja 8 tehtävät.
 Tein moduulin 9 tehtävät.
 Moduulin 10 tehtävät tehty.
 Tein moduulin 11 tehtävät.
-Tein moduulin 12 tehtävät.
-Tein moduulin 13 tehtävät.
+Tein moduulin 12 ja 13 tehtävät, ja ne ovat osa porkkanapeliä.
